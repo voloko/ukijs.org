@@ -2,7 +2,7 @@
 @example_title Resize label to contents with bottom placed anchors
 @example_html
     <div id='test' style='width: 90%; height: 350px;'></div>
-    <script src="/uki-core/uki.cjs"></script>
+    <script src="/src/uki.cjs"></script>
     <script src='resizeToContents.js'></script>
 */
 

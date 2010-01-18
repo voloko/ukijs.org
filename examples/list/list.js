@@ -2,7 +2,7 @@
 @example_title List component
 @example_html
     <div id='test' style='width: 80%; height: 400px;'></div>
-    <script src="/uki-core/uki.cjs"></script>
+    <script src="/src/uki.cjs"></script>
     <script src="list.js"></script>
 */
 

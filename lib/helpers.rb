@@ -1,7 +1,3 @@
-def core_path(path)
-  "/uki-core/#{path}"
-end
-
 def get_example_page(path)
   name = File.basename(path)
   html_path = File.join(path, name + '.html')
@@ -56,19 +52,4 @@ end
 
 def encode64(str)
   Base64.encode64(str).gsub("\n", '')
-end
-
-def process_path(path, included = {})
-  code = File.read(path)
-  base = File.dirname(path)
-  
-  code.gsub(%r{include\s*\(\s*['"]([^"']+)["']\s*\)\s*;?}) {
-    include_path = File.expand_path(File.join(base, $1))
-    unless included[include_path]
-      included[include_path] = true
-      process_path(include_path, included)
-    else
-      ''
-    end
-  }
 end

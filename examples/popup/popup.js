@@ -3,7 +3,7 @@
 @example_html
     <style>body, html { overflow: hidden; margin: 0; padding: 0; }</style>
     <div id="test" style="width: 90%; height: 300px;"></div>
-    <script src="/uki-core/uki.cjs"></script>
+    <script src="/src/uki.cjs"></script>
     <script src="popup.js"></script>
 */
 

@@ -2,7 +2,7 @@
 @example_title Background stress test
 @example_html
     <style>body, html { margin: 0; padding: 0; };</style>
-    <script src="/uki-core/uki.cjs"></script>
+    <script src="/src/uki.cjs"></script>
     <script src="stress.js"></script>
 */
 

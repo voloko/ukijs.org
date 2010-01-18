@@ -1,7 +1,7 @@
 /**
 @example_title Vertical and Horizontal flows example
 @example_html
-    <script src="/uki-core/uki.cjs"></script>
+    <script src="/src/uki.cjs"></script>
     <script src="flow.js"></script>
 */
 

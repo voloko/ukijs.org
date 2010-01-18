@@ -1,8 +1,8 @@
 /**
 @example_title Long table
 @example_html
-    <style>body, html { margin: 0; padding: 0; };</style>
-    <script src="/uki-core/uki.cjs"></script>
+    <style>body, html { margin: 0; padding: 0; overflow:hidden; };</style>
+    <script src="/src/uki.cjs"></script>
     <script src="searchable.js"></script>
     <script src="table.js"></script>
 */
@@ -83,6 +83,7 @@ window.onLibraryLoad = function(data) {
             table.data(model.items);
         }
     });
+    document.body.className += '';
 };
 var script = document.createElement('script'),
     head = document.getElementsByTagName('head')[0];

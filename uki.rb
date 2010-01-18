@@ -5,18 +5,25 @@ require 'base64'
 require 'fileutils'
 require 'tempfile'
 require 'lib/helpers'
+require 'net/http'
 
 SERVER_ROOT = File.expand_path(File.dirname(__FILE__))
+
+UKI_HOST = '127.0.0.1'
+UKI_PORT = 21119
+UKI_PATH = '/src/'
 
 class Uki < Sinatra::Base
   get '/' do
     haml :index
   end
   
-  get '/uki-core/*.cjs' do
-    path = File.join(SERVER_ROOT, '..', 'uki', 'src', params[:splat][0] + '.js')
-    response.header['Content-type'] = 'application/x-javascript; charset=UTF-8'
-    process_path path
+  get '/src/*' do
+    proxy_response = Net::HTTP.start(UKI_HOST, UKI_PORT) { |http| http.get("#{UKI_PATH}#{params[:splat][0]}") }
+    proxy_response.each_header { |name, value|
+      response.header[name] = value
+    }
+    proxy_response.body
   end
   
   get %r{/examples/.*\.(png|css|jpg|js|zip)$} do

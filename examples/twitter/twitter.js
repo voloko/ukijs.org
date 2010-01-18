@@ -2,7 +2,7 @@
 @example_title Twitter widget
 @example_html
     <div id="container" style="margin: 20px; width: 250px; height: 300px;"></div>
-    <script src="/uki-core/uki.cjs"></script>
+    <script src="/src/uki.cjs"></script>
     <script src='twitter.js'></script>
     <p> Example code <a href="http://github.com/voloko/uki/tree/master/app/functional/twitter/">at github</a></p>
 */

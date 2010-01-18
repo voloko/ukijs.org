@@ -2,7 +2,7 @@
 @example_title Scroll pane
 @example_html
     <style>body, html { overflow: hidden; margin: 0; padding: 0; }</style>
-    <script src="/uki-core/uki.cjs"></script>
+    <script src="/src/uki.cjs"></script>
     <script src="scrollPane.js"></script>
 */
 
