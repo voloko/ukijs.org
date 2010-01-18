@@ -1,0 +1,56 @@
+h2. What css is good for.
+
+Uki core does not use css. At least the part with selectors and separate stylesheets. You may wonder why. 
+To answer that let us first understand why we style pages with css. 
+
+h3. Styling complex DOM structures
+
+This is the task css is great at. You can style pages with thousands of html tags with a relatively short css declaration. 
+You can target any particular element, while retaining the ability to style clusters of it.
+
+But why do we have to use complex DOM in the first place? Because when it comes to today web apps html is an extremely low level language.
+Writing web interfaces with html is like trying to code a desktop app in assembler. Maybe not that bad but you get the point.
+
+When you build interfaces out of uki views you don't have to style particular dom nodes. Instead you set up the self-contained interface elements.
+And there's a limited number of them usually (tens not thousands). There's no need to think up a separate structure to style them.
+
+h3. Reducing duplication
+
+Without css selectour you'd have to write inline styles in html for every element. And this styles will duplicate for similar looking elements. 
+That would increase page size and thus load time will grow. So css is good for reducing code duplication.
+
+With uki we're in javascript world. When you want to style several elements similarly you can create a function which will add those styles
+to any element required. Thus you won't get any benefit from adding a separate stylesheet.
+
+
+h2. What is wrong with css
+
+h3. More resources
+
+With css stylesheets you have to write them, merge them and then deploy somewhere. This is a separate tech process you have to manage.
+And then you have to load them on every page. Thus you have to add @<link>@ for all css files you use. And you have to change this tags
+whenever you css files are renamed. It all ads to complexity of you app.
+
+h3. Less control
+
+There's no simple way to modify css rules from javascript code. Thus you'll end up with some code that's unmanageable from you application.
+
+h3. Fuzzy responsibility
+
+With uki you create and style views with javascript. Adding a css selector based styling will split you view logic into two separate places.
+Two separate technologies would be responsible for styling your code. With a very fuzzy border between them.
+Thus for every change you'd have to update two things instead of one. And for every bug you'd be debugging two places instead of one. 
+
+h3. Cross-browser hacks
+
+If you want to support all browsers with css code you have to use conditional comments and/or css hacks. There are several drawbacks with
+this approaches. First this relies on browser detect, not feature detect. Second you write more code.
+
+When you use uki view attributes it is guarantied by the framework that they'll work exactly the same in every browser.
+
+
+h2. Conclusion
+
+
+
+

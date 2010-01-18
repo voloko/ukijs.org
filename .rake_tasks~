@@ -1,0 +1,5 @@
+copy
+deploy
+docs
+haml
+rsync

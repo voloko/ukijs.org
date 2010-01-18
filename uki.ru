@@ -1,0 +1,2 @@
+require 'uki'
+run Uki
