@@ -1,0 +1,2 @@
+require 'ukijs'
+run Ukijs

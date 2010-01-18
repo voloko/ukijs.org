@@ -13,7 +13,7 @@ UKI_HOST = '127.0.0.1'
 UKI_PORT = 21119
 UKI_PATH = '/src/'
 
-class Uki < Sinatra::Base
+class Ukijs < Sinatra::Base
   get '/' do
     haml :index
   end

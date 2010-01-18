@@ -34,15 +34,15 @@ end
 
 desc "Run thin"
 task :start do
-  sh "sudo thin -s 1 -C thin.yaml -R uki.ru start"
+  sh "sudo thin -s 1 -C thin.yaml -R ukijs.ru start"
 end
 
 desc "Run thin"
 task :restart do
-  sh "sudo thin -s 1 -C thin.yaml -R uki.ru restart"
+  sh "sudo thin -s 1 -C thin.yaml -R ukijs.ru restart"
 end
 
 desc "Stop thin"
 task :stop do
-  sh "sudo thin -s 1 -C thin.yaml -R uki.ru stop"
+  sh "sudo thin -s 1 -C thin.yaml -R ukijs.ru stop"
 end
