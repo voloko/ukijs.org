@@ -50,3 +50,8 @@ uki('Button').bind('click', function() {
 uki('Slider').bind('change', function() {
    uki(this.parent()).find('> TextField:last').value(this.value())
 });
+
+// Make label work as labels in browser
+uki('Label').click(function() {
+   if (this.prevView().checked) this.prevView().checked(!this.prevView().checked()).focus();
+});
