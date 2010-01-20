@@ -9,9 +9,14 @@
             <arg value="--delete" />
             <arg value="--exclude" />
             <arg value="build.xml" />
+            <arg value="--exclude" />
+            <arg value="*.pid" />
+            <arg value="--exclude" />
+            <arg value="*.log" />
             <arg value="-e" /><arg value="ssh" />
-            <arg value="${project.dir}/public/" />
-            <arg value="ukijs.org:/var/www/ukijs/public/" />
+            <arg value="${project.dir}/" />
+            <!-- <arg value="ukijs.org:/var/www/ukijs/public/" /> -->
+            <arg value="ukijs.org:/var/www/ukijs.org/" />
         </exec>
     </target>
 </project>

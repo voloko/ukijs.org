@@ -1,28 +1,6 @@
 require 'rubygems'
+require 'json'
 require 'fileutils'
-
-def read_version
-  base = File.dirname(__FILE__)
-  File.read(File.join(base, '..', 'uki', 'src', 'uki-core', 'uki.js')).match(%r{uki.version\s*=\s*'([^']+)'})[1]
-end
-
-desc "Copy all data from ukijs"
-task :copy do
-  FileUtils.rm_rf 'public/app'
-  FileUtils.cp_r '../uki/app', 'public/app'
-end
-
-desc "Deploy: copy, haml and rsync"
-task :deploy do
-  Rake::Task[ "copy" ].execute
-  Rake::Task[ "rsync" ].execute
-end
-
-desc "Rsync file to ukijs.org"
-task :rsync do
-  base = File.dirname(__FILE__)
-  `rsync -vazC --delete --exclude build.xml -e ssh #{base}/public/ ukijs.org:/var/www/ukijs/public/`
-end
 
 desc "Build docs"
 task :docs do
@@ -32,17 +10,48 @@ task :docs do
   Dir.chdir base
 end
 
-desc "Run thin"
+desc "Generate version info"
+task :version_info do
+  base = File.dirname(__FILE__)
+  src_base = File.join(base, '..', 'uki', 'src', 'uki-core')
+  pkg_base = File.join(base, '..', 'uki', 'pkg')
+  target_path = File.join(base, 'public', 'version_info.json')
+  info = {
+    :version => File.read(File.join(src_base, 'uki.js')).match(%r{uki.version\s*=\s*'([^']+)'})[1],
+    :dev_size => File.size(File.join(pkg_base, 'uki.dev.js')),
+    :compressed_size => File.size(File.join(pkg_base, 'uki.gz.js')),
+  }
+  File.open(target_path, 'w') { |f| f.write info.to_json }
+end
+
+desc "Run thin development"
 task :start do
-  sh "sudo thin -s 1 -C thin.yaml -R ukijs.ru start"
+  sh "sudo thin -C dev.yaml start"
 end
 
 desc "Run thin"
 task :restart do
-  sh "sudo thin -s 1 -C thin.yaml -R ukijs.ru restart"
+  sh "sudo thin -C dev.yaml restart"
 end
 
 desc "Stop thin"
 task :stop do
-  sh "sudo thin -s 1 -C thin.yaml -R ukijs.ru stop"
+  sh "sudo thin -C dev.yaml stop"
+end
+
+namespace :prod do
+  desc "Run thin development"
+  task :start do
+    sh "sudo thin -s 3 -C prod.yaml start"
+  end
+
+  desc "Run thin"
+  task :restart do
+    sh "sudo thin -s 3 -C prod.yaml restart"
+  end
+
+  desc "Stop thin"
+  task :stop do
+    sh "sudo thin -s 3 -C prod.yaml stop"
+  end
 end

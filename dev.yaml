@@ -3,9 +3,10 @@
   address: 0.0.0.0
   port: 21120 # 21 11 9 u k i + 1
   pid: thin.pid
-  rackup: ukijs.ru
+  rackup: thin.ru
   log: thin.log
   max_conns: 1024
   timeout: 30
   max_persistent_conns: 1024
   daemonize: true
+  servers: 1

@@ -8,6 +8,17 @@ def get_example_page(path)
   end
 end
 
+def list_examples(path)
+  Dir.new(path).select { |name| 
+    File.exist?(File.join(path, name, name + '.js'))
+  }
+end
+
+def replace_src_paths(html, version_info)
+  version = version_info['version']
+  html.gsub(%r{src\s*=\s*["']/src/(.*?)\.cjs['"]}, "src='http://static.ukijs.org/pkg/#{version}/\\1.js'")
+end
+
 def extract_example_html(path)
   name = File.basename(path)
   js_path = File.join(path, name + '.js')
@@ -19,7 +30,7 @@ def extract_example_title(path)
   name = File.basename(path)
   js_path = File.join(path, name + '.js')
   js_contents = File.read(js_path)
-  js_contents.match(%r{@example_title(.*)})[1] rescue 'Untitled'
+  js_contents.match(%r{@example_title(.*?)(\*/|$)})[1] rescue 'Untitled'
 end
 
 def optimize_png(data)
