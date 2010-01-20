@@ -14,3 +14,5 @@
           %a{:href => example[:path]}= example[:title]
           %small
             %a{:href => "http://github.com/voloko/ukijs.org/tree/master/examples/#{example[:path]}/"} source
+    = File.read File.join(File.dirname(__FILE__), 'ga.txt')
+    
