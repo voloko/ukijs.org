@@ -6,7 +6,7 @@ desc "Build docs"
 task :docs do
   base = File.dirname(__FILE__)
   Dir.chdir '../uki'
-  `java -jar ../jsdoc-toolkit/jsrun.jar ../jsdoc-toolkit/app/run.js -a -t=../jsdoc-toolkit/templates/jsdoc src/uki-core/** -d=../ukijs.org/public/docs`
+  `java -jar ../jsdoc-toolkit/jsdoc-toolkit/jsrun.jar ../jsdoc-toolkit/jsdoc-toolkit/app/run.js -a -t=../jsdoc-toolkit/jsdoc-toolkit/templates/uki src/uki-core/** -d=../ukijs.org/public/docs`
   Dir.chdir base
 end
 

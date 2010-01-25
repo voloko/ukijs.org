@@ -55,6 +55,14 @@ class Ukijs < Sinatra::Base
     File.read File.join(SERVER_ROOT, path)
   end
   
+  get '/functional/*' do
+    redirect '/examples/' + params[:splat][0].sub('.html', '/')
+  end
+  
+  get '/app/functional/*' do
+    redirect '/examples/' + params[:splat][0].sub('.html', '/')
+  end
+  
   get '/examples/' do
     path = File.join(SERVER_ROOT, 'examples')
     exampleList = list_examples(path).map { |name|
