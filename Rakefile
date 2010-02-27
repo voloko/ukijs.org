@@ -26,32 +26,32 @@ end
 
 desc "Run thin development"
 task :start do
-  sh "sudo thin -C dev.yaml start"
+  sh "thin -C dev.yaml start"
 end
 
 desc "Run thin"
 task :restart do
-  sh "sudo thin -C dev.yaml restart"
+  sh "thin -C dev.yaml restart"
 end
 
 desc "Stop thin"
 task :stop do
-  sh "sudo thin -C dev.yaml stop"
+  sh "thin -C dev.yaml stop"
 end
 
 namespace :prod do
   desc "Run thin development"
   task :start do
-    sh "sudo thin -s 3 -C prod.yaml start"
+    sh "thin -s 3 -C prod.yaml start"
   end
 
   desc "Run thin"
   task :restart do
-    sh "sudo thin -s 3 -C prod.yaml restart"
+    sh "thin -s 3 -C prod.yaml restart"
   end
 
   desc "Stop thin"
   task :stop do
-    sh "sudo thin -s 3 -C prod.yaml stop"
+    sh "thin -s 3 -C prod.yaml stop"
   end
 end

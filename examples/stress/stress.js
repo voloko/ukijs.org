@@ -1,5 +1,6 @@
 /**
 @example_title Background stress test
+@example_order 3000
 @example_html
     <style>body, html { margin: 0; padding: 0; };</style>
     <script src="/src/uki.cjs"></script>

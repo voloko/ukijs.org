@@ -1,4 +1,5 @@
-/** @example_title Wave layout */
+/** @example_title Wave layout
+    @example_order 1000 */
 document.body.style.backgroundImage = 'url(' + uki.theme.imageSrc('body') + ')';
 var ContactsRender = {
     template: uki.theme.template('contacts-render'),

@@ -1,5 +1,6 @@
 /**
-@example_title Long table
+@example_title Table
+@example_order 42
 @example_html
     <style>body, html { margin: 0; padding: 0; overflow:hidden; };</style>
     <script src="/src/uki.cjs"></script>

@@ -1,5 +1,6 @@
 /**
-@example_title Resize label to contents with bottom placed anchors
+@example_title Resize to contents
+@example_order 3071
 @example_html
     <div id='test' style='width: 90%; height: 350px;'></div>
     <script src="/src/uki.cjs"></script>

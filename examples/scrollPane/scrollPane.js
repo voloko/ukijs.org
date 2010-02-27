@@ -1,5 +1,6 @@
 /**
 @example_title Scroll pane
+@example_order 61
 @example_html
     <style>body, html { overflow: hidden; margin: 0; padding: 0; }</style>
     <script src="/src/uki.cjs"></script>

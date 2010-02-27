@@ -1,5 +1,6 @@
 /**
 @example_title Twitter widget
+@example_order 1001
 @example_html
     <div id="container" style="margin: 20px; width: 250px; height: 300px;"></div>
     <script src="/src/uki.cjs"></script>

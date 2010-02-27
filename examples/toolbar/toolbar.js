@@ -1,5 +1,6 @@
 /**
-@example_title Toolbar with collapsable buttons
+@example_title Toolbar
+@example_order 51
 @example_html
     <style>body, html { margin: 0; padding: 0; };</style>
     <script src="/src/uki.cjs"></script>

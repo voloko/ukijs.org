@@ -1,5 +1,6 @@
 /**
-@example_title Vertical and Horizontal flows example
+@example_title Vertical and Horizontal flows
+@example_order 3062
 @example_html
     <script src="/src/uki.cjs"></script>
     <script src="flow.js"></script>

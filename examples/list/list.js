@@ -1,5 +1,6 @@
 /**
-@example_title List component
+@example_title List
+@example_order 42
 @example_html
     <div id='test' style='width: 80%; height: 400px;'></div>
     <script src="/src/uki.cjs"></script>

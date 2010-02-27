@@ -165,6 +165,47 @@ p.download {
         padding-left: 20px;
     }
 
+.screencasts {
+    background: #fff;
+    border-top: 2px solid #999;
+    font-size: 13px;
+}
+    .screencasts .title {
+        position: absolute;
+        left: 50px;
+        top: 20px;
+        font-weight: bold;
+        color: #999;
+        text-transform: uppercase;
+    }
+    
+    .screencasts .video {
+        background: #FFF;
+        border: 1px solid #CCC;
+        margin: 16px 0 16px 0;
+        padding: 4px;
+        -moz-box-shadow: 0 0 2px #999;
+        -webkit-box-shadow: 0 0 2px #999;
+        cursor: pointer;
+        width: 112px;
+        display: inline-block;
+        margin-left: 30px;
+        *float: left;
+        *display: inline;
+    }
+    .screencasts .shot {
+    }
+    
+    .screencasts .label {
+        font-size: 11px;
+        color: #999;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 110px;
+        height: 28px;
+    }
+    
 .features {
     background: #fff;
     border-top: 2px solid #999;

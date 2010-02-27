@@ -65,9 +65,13 @@ class Ukijs < Sinatra::Base
   
   get '/examples/' do
     path = File.join(SERVER_ROOT, 'examples')
-    exampleList = list_examples(path).map { |name|
-      { :path => name, :title => extract_example_title(File.join(path, name)) }
-    }
+    exampleList = list_examples(path).map do |name|
+      { 
+        :path => name, 
+        :title => extract_example_title(File.join(path, name)),
+        :order => extract_example_order(File.join(path, name)) 
+      }
+    end.sort { |e1, e2| e1[:order] <=> e2[:order] }
     haml :exampleList, :locals => { :exampleList => exampleList }
   end
   

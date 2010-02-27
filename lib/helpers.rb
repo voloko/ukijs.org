@@ -33,6 +33,13 @@ def extract_example_title(path)
   js_contents.match(%r{@example_title(.*?)(\*/|$)})[1] rescue 'Untitled'
 end
 
+def extract_example_order(path)
+  name = File.basename(path)
+  js_path = File.join(path, name + '.js')
+  js_contents = File.read(js_path)
+  js_contents.match(%r{@example_order(.*?)(\*/|$)})[1].to_i rescue 9e6
+end
+
 def optimize_png(data)
   f = Tempfile.new(['opt_png', '.png'])
   f.write(data)

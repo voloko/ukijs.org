@@ -9,7 +9,12 @@
   %body.text
     %h1 <a href="/">Uki</a> code examples
     %ul
+      - lastExample = nil
       - exampleList.each do |example|
+        - if lastExample && example[:order] - lastExample[:order] > 100
+          %li
+            %br
+        - lastExample = example
         %li
           %a{:href => example[:path]}= example[:title]
           %small

@@ -1,5 +1,6 @@
 /**
-@example_title Different popup positions
+@example_title Popup
+@example_order 52
 @example_html
     <style>body, html { overflow: hidden; margin: 0; padding: 0; }</style>
     <div id="test" style="width: 90%; height: 300px;"></div>
