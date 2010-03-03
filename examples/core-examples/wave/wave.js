@@ -44,7 +44,7 @@ uki({ view: 'SplitPane', id: 'splitMain', rect: '15 50 975 950', minSize: '800 4
             { view: 'Box', rect: '0 23 166 70', background: 'theme(box-lblue-top)', anchors: 'left top right', childViews: [
                 { view: 'Image', rect: '7 6 27 27', anchors: 'left top', src: 'voloko.jpg', background: 'theme(thumb)' },
                 { view: 'Label', rect: '40 8 100 13', anchors: 'left top', text: 'Volodya', style: { fontWeight: 'bold', fontSize: '13px' }, textSelectable: true },
-                { view: 'TextField', rect: '16 41 120 24', anchors: 'left top right', style: { fontSize: '12px' }, backgroundPrefix: 'search-button-', value: '', placeholder: 'Search contacts' },
+                { view: 'TextField', rect: '16 41 120 24', anchors: 'left top right', style: { fontSize: '12px' }, backgroundPrefix: 'search-', value: '', placeholder: 'Search contacts' },
                 { view: 'Button', rect: '139 46 13 13', anchors: 'right top', backgroundPrefix: 'search-button-', focusable: false }
             ] },
             { view: 'ScrollPane', rect: '0 93 166 586', anchors: 'left top right bottom', childViews: [
@@ -60,7 +60,7 @@ uki({ view: 'SplitPane', id: 'splitMain', rect: '15 50 975 950', minSize: '800 4
         leftChildViews: panel('Inbox 1 - 4 of 4', { rect: '300 930', childViews: [
             { view: 'Box', rect: '0 23 300 56', background: 'theme(box-lblue)', anchors: 'left top right', childViews: [
                 { view: 'Button', rect: '7 16 70 24', anchors: 'left top', text: 'New wave', style: { fontWeight: 'normal', fontSize: '11px' }, focusable: false },
-                { view: 'TextField', rect: '90 16 180 24', anchors: 'left top right', style: { fontSize: '12px' }, backgroundPrefix: 'search-button-', value: 'in:inbox', placeholder: 'Search waves' },
+                { view: 'TextField', rect: '90 16 180 24', anchors: 'left top right', style: { fontSize: '12px' }, backgroundPrefix: 'search-', value: 'in:inbox', placeholder: 'Search waves' },
                 { view: 'Button', rect: '274 21 13 13', anchors: 'right top', backgroundPrefix: 'search-button-', focusable: false }
             ] },
             { view: 'Toolbar', rect: '0 79 300 24', anchors: 'left top right', background: 'theme(toolbar-normal)', buttons: [

@@ -40,9 +40,10 @@ class Ukijs < Sinatra::Base
     process_src_paths(haml :index, :locals => {:version_info => version_info})
   end
   
-  get %r{/examples/.*\.(png|css|jpg|js|zip)$} do
+  get %r{/examples/.*\.(gif|png|css|jpg|js|zip)$} do
     path = request.path
     response.header['Content-type'] = 'image/png' if path.match(/\.png$/)
+    response.header['Content-type'] = 'image/gif' if path.match(/\.gif$/)
     response.header['Content-type'] = 'text/css' if path.match(/\.css$/)
     response.header['Content-type'] = 'image/jpeg' if path.match(/\.jpg$/)
     response.header['Content-type'] = 'text/javascript;charset=utf-8' if path.match(/\.js$/)
