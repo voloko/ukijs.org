@@ -31,7 +31,7 @@ function panel (label, args) {
     return uki.extend({}, { view: 'Box', name: 'panel', background: 'theme(panel-blue)', rect: '100 100', anchors: 'left top right bottom' }, args);
 }
 
-uki({ view: 'SplitPane', id: 'splitMain', rect: '15 50 975 950', minSize: '800 400', anchors: 'left top right bottom', handleWidth: 15, handlePosition: 166, leftMin: 166, rightMin: 600,
+uki({ view: 'HorizontalSplitPane', id: 'splitMain', rect: '15 50 975 950', minSize: '800 400', anchors: 'left top right bottom', handleWidth: 15, handlePosition: 166, leftMin: 166, rightMin: 600,
     leftChildViews: { view: 'VerticalSplitPane', id: 'splitLeft', rect: '166 950', anchors: 'left top right bottom', handleWidth: 16, handlePosition: 200, bottomMin: 230, topMin: 120,
         topChildViews: panel('Navigation', { rect: '166 200', background: 'theme(panel-white)', childViews: [
             { view: 'ScrollPane', rect: '0 24 166 170', anchors: 'left top right bottom', childViews: [
@@ -56,7 +56,7 @@ uki({ view: 'SplitPane', id: 'splitMain', rect: '15 50 975 950', minSize: '800 4
             ] }
         ] })
     },
-    rightChildViews: { view: 'SplitPane', id: 'splitRight', rect: '795 950', anchors: 'left top right bottom', handleWidth: 15, handlePosition: 300, leftMin: 300, rightMin: 300,
+    rightChildViews: { view: 'HorizontalSplitPane', id: 'splitRight', rect: '795 950', anchors: 'left top right bottom', handleWidth: 15, handlePosition: 300, leftMin: 300, rightMin: 300,
         leftChildViews: panel('Inbox 1 - 4 of 4', { rect: '300 930', childViews: [
             { view: 'Box', rect: '0 23 300 56', background: 'theme(box-lblue)', anchors: 'left top right', childViews: [
                 { view: 'Button', rect: '7 16 70 24', anchors: 'left top', text: 'New wave', style: { fontWeight: 'normal', fontSize: '11px' }, focusable: false },

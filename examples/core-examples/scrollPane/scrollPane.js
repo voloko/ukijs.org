@@ -8,7 +8,7 @@
 */
 
 uki([
-    { view: 'SplitPane', rect: '0 0 1000 600', anchors: 'left top right bottom', 
+    { view: 'HorizontalSplitPane', rect: '0 0 1000 600', anchors: 'left top right bottom', 
         handlePosition: 300, autogrowLeft: false, autogrowRight: true, autogrowLeft: false, handleWidth: 1, rightMin: 400, leftMin: 150,
         leftChildViews:
             { view: 'ScrollPane', rect: '0 0 300 600', anchors: 'top left right bottom', background: '#0F0', name: 'pane_1',

@@ -9,7 +9,7 @@
 
 uki(
 {   // create a split pane...
-    view: 'SplitPane', rect: '1000 600', anchors: 'left top right bottom',
+    view: 'HorizontalSplitPane', rect: '1000 600', anchors: 'left top right bottom',
     handlePosition: 300, leftMin: 200, rightMin: 300,
     // ...with button on the left
     leftChildViews: { view: 'Button', rect: '10 10 280 24', anchors: 'top left right', text: 'Clear text field' },
@@ -25,7 +25,7 @@ uki(
 }).attachTo( window, '1000 600' );
 
 // on slider change update text field
-uki('SplitPane Slider').bind('change', function() {
+uki('HorizontalSplitPane Slider').bind('change', function() {
     uki('TextField').value(this.value())
 });
 

@@ -4,7 +4,7 @@
 @example_html
     <style>body, html { overflow: hidden; margin: 0; padding: 0; }</style>
     <script src="/src/uki.cjs"></script>
-    <script src="/src/uki-more/more/view/multiselectList.cjs"></script>
+    <script src="/src/uki-more.cjs"></script>
     <script src="multiselectList.js"></script>
 */
 
@@ -15,7 +15,7 @@ for (var i=3; i < 30000; i++) {
 };
 
 var p = uki(
-    { view: 'SplitPane', rect: '1000 600', anchors: 'top left right bottom', handleWidth: 1,
+    { view: 'HorizontalSplitPane', rect: '1000 600', anchors: 'top left right bottom', handleWidth: 1,
         leftMin: 200, rightMin: 400, handlePosition: 200,
         leftChildViews: [ // scrollable list on the left
             { view: 'ScrollPane', rect: '200 600', anchors: 'top left right bottom',

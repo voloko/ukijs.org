@@ -4,7 +4,7 @@
 @example_html
     <div id='test' style='width: 50%; height: 100px; background: #EEE'>#test</div>
     <script src="/src/uki.cjs"></script>
-    <script src="/src/uki-more/more/view/toggleButton.cjs"></script>
+    <script src="/src/uki-more.cjs"></script>
     <script src="toggleButton.js"></script>
 */
 

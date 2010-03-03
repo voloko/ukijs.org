@@ -4,7 +4,7 @@
 @example_html
     <style>body, html { overflow: hidden; margin: 0; padding: 0; }</style>
     <script src="/src/uki.cjs"></script>
-    <script src="/src/uki-more/more/view/treeList.cjs"></script>
+    <script src="/src/uki-more.cjs"></script>
     <script src="treeList.js"></script>
 */
 
