@@ -23,7 +23,7 @@ function toolbarButton (label, offset) {
 }
 
 function menuButton (label, offset, rect) {
-    return uki.extend(toolbarButton(label, offset), { view: 'Button', style: { textAlign: 'left', fontSize: '13px', fontWeight: 'normal', color: '' }, rect: rect, backgroundPrefix: 'link-', focusable: 'false', anchors: 'left top right', inset: '0 8 0 30', focusable: false });
+    return uki.extend(toolbarButton(label, offset), { view: 'Button', style: { textAlign: 'left', fontSize: '13px', fontWeight: 'normal', color: '' }, rect: rect, backgroundPrefix: 'link-button-', focusable: 'false', anchors: 'left top right', inset: '0 8 0 30', focusable: false });
 }
 
 function panel (label, args) {
@@ -44,15 +44,15 @@ uki({ view: 'SplitPane', id: 'splitMain', rect: '15 50 975 950', minSize: '800 4
             { view: 'Box', rect: '0 23 166 70', background: 'theme(box-lblue-top)', anchors: 'left top right', childViews: [
                 { view: 'Image', rect: '7 6 27 27', anchors: 'left top', src: 'voloko.jpg', background: 'theme(thumb)' },
                 { view: 'Label', rect: '40 8 100 13', anchors: 'left top', text: 'Volodya', style: { fontWeight: 'bold', fontSize: '13px' }, textSelectable: true },
-                { view: 'TextField', rect: '16 41 120 24', anchors: 'left top right', style: { fontSize: '12px' }, backgroundPrefix: 'search-', value: '', placeholder: 'Search contacts' },
-                { view: 'Button', rect: '139 46 13 13', anchors: 'right top', backgroundPrefix: 'search-', focusable: false }
+                { view: 'TextField', rect: '16 41 120 24', anchors: 'left top right', style: { fontSize: '12px' }, backgroundPrefix: 'search-button-', value: '', placeholder: 'Search contacts' },
+                { view: 'Button', rect: '139 46 13 13', anchors: 'right top', backgroundPrefix: 'search-button-', focusable: false }
             ] },
             { view: 'ScrollPane', rect: '0 93 166 586', anchors: 'left top right bottom', childViews: [
                 { view: 'List', id: "contactsList", rect: '166 586', anchors: 'left top right bottom', minSize: '0 100', rowHeight: 34, render: ContactsRender }
             ] },
             { view: 'Box', rect: '0 678 166 32', background: 'theme(box-lblue-bottom)', anchors: 'left bottom right', childViews: [
                 { view: 'Label', rect: '7 13 90 12', anchors: 'left top', style: { fontSize: '12px' }, html: '<u>Manage contacts</u>', background: 'theme(link)' },
-                { view: 'Button', rect: '136 10 24 18', backgroundPrefix: 'plus-', anchors: 'right bottom', focusable: false }
+                { view: 'Button', rect: '136 10 24 18', backgroundPrefix: 'plus-button-', anchors: 'right bottom', focusable: false }
             ] }
         ] })
     },
@@ -60,8 +60,8 @@ uki({ view: 'SplitPane', id: 'splitMain', rect: '15 50 975 950', minSize: '800 4
         leftChildViews: panel('Inbox 1 - 4 of 4', { rect: '300 930', childViews: [
             { view: 'Box', rect: '0 23 300 56', background: 'theme(box-lblue)', anchors: 'left top right', childViews: [
                 { view: 'Button', rect: '7 16 70 24', anchors: 'left top', text: 'New wave', style: { fontWeight: 'normal', fontSize: '11px' }, focusable: false },
-                { view: 'TextField', rect: '90 16 180 24', anchors: 'left top right', style: { fontSize: '12px' }, backgroundPrefix: 'search-', value: 'in:inbox', placeholder: 'Search waves' },
-                { view: 'Button', rect: '274 21 13 13', anchors: 'right top', backgroundPrefix: 'search-', focusable: false }
+                { view: 'TextField', rect: '90 16 180 24', anchors: 'left top right', style: { fontSize: '12px' }, backgroundPrefix: 'search-button-', value: 'in:inbox', placeholder: 'Search waves' },
+                { view: 'Button', rect: '274 21 13 13', anchors: 'right top', backgroundPrefix: 'search-button-', focusable: false }
             ] },
             { view: 'Toolbar', rect: '0 79 300 24', anchors: 'left top right', background: 'theme(toolbar-normal)', buttons: [
                 toolbarButton('Follow', '0 0'), toolbarButton('Unfollow', '-16px 0'), toolbarButton('Archive', '-32px 0'), toolbarButton('Inbox', '0 0'), toolbarButton('Spam', '-48px 0'), toolbarButton('Read', '-64px 0'), toolbarButton('Unread', '-80px 0'), toolbarButton('Trash', '-96px 0'), toolbarButton('Move to', '-112px 0')
@@ -76,7 +76,7 @@ uki({ view: 'SplitPane', id: 'splitMain', rect: '15 50 975 950', minSize: '800 4
         rightChildViews: panel('Simplicity is the key', { rect: '470 930', background: 'theme(panel-blue)', childViews: [
             { view: 'Box', rect: '0 23 470 56', background: 'theme(box-lblue)', anchors: 'left top right', childViews: [
                 { view: 'Image', rect: '7 7 40 40', anchors: 'left top', src: 'voloko.jpg', background: 'theme(thumb)' },
-                { view: 'Button', rect: '58 16 33 24', backgroundPrefix: 'plus-big-', anchors: 'left bottom', focusable: false }
+                { view: 'Button', rect: '58 16 33 24', backgroundPrefix: 'plus-big-button-', anchors: 'left bottom', focusable: false }
             ] },
             { view: 'Toolbar', rect: '0 79 470 24', anchors: 'left top right', background: 'theme(toolbar-normal)', buttons: [
                 toolbarButton('Reply', '-128px 0'), toolbarButton('Playback', '-144px 0'), toolbarButton('Unfollow', '-16px 0'), toolbarButton('Archive', '-32px 0'), toolbarButton('Spam', '-48px 0'), toolbarButton('Read', '-64px 0'), toolbarButton('Unread', '-80px 0'), toolbarButton('Trash', '-96px 0'), toolbarButton('Move to', '-112px 0')
@@ -84,9 +84,9 @@ uki({ view: 'SplitPane', id: 'splitMain', rect: '15 50 975 950', minSize: '800 4
             { view: 'Label', id: 'message', rect: '0 103 470 791', anchors: 'left top right bottom', multiline: true, scrollable: true, inset: '2 2', textSelectable: true },
             { view: 'Box', rect: '0 894 470 32', background: 'theme(box-lblue-bottom)', anchors: 'left bottom right', childViews: [
                 { view: 'Label', rect: '7 13 30 12', anchors: 'left top', fontSize: '12px', text: 'Tags:' },
-                { view: 'Button', rect: '45 10 24 18', backgroundPrefix: 'plus-', anchors: 'left bottom', focusable: false },
-                { view: 'Button', rect: '343 7 65 24', anchors: 'right bottom', text: 'Images', backgroundPrefix: 'a-', inset: '0 16 0 2', style: { fontWeight: 'normal', fontSize: '11px' }, focusable: false },
-                { view: 'Button', rect: '413 7 50 24', anchors: 'right bottom', text: 'Files', backgroundPrefix: 'a-', inset: '0 16 0 2', style: { fontWeight: 'normal', fontSize: '11px' }, focusable: false }
+                { view: 'Button', rect: '45 10 24 18', backgroundPrefix: 'plus-button-', anchors: 'left bottom', focusable: false },
+                { view: 'Button', rect: '343 7 65 24', anchors: 'right bottom', text: 'Images', backgroundPrefix: 'a-button-', inset: '0 16 0 2', style: { fontWeight: 'normal', fontSize: '11px' }, focusable: false },
+                { view: 'Button', rect: '413 7 50 24', anchors: 'right bottom', text: 'Files', backgroundPrefix: 'a-button-', inset: '0 16 0 2', style: { fontWeight: 'normal', fontSize: '11px' }, focusable: false }
             ] }
         ] })
     }
