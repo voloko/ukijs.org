@@ -76,6 +76,10 @@ class Ukijs < Sinatra::Base
     haml :exampleList, :locals => { :exampleList => exampleList }
   end
   
+  get %r{/examples/[^/]+/?$} do
+    redirect request.path.sub('/examples/', '/examples/core-examples/')
+  end
+  
   get '/examples/*' do
     redirect request.path + '/' unless request.path.match(%{/$}) # force trailing slash
     
