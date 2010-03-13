@@ -39,7 +39,7 @@ var widget = uki({
             ] },
         { view: 'ScrollPane', rect: '0 50 200 250',                  // Scrollable tweet container
             anchors: 'left top right bottom', childViews: [
-                { view: 'VerticalFlow',  rect: '5 5 190 250',        // Flow of tweet views
+                { view: 'VFlow',  rect: '5 5 190 250',        // Flow of tweet views
                     anchors: 'left top right bottom' }
             ] }
     ]
@@ -83,7 +83,7 @@ function layoutTweet (tweet, flow) {
 
 // update tweet list when new tweets loaded
 function updateTweets (data) {
-    var flow = widget.find('VerticalFlow'), // get the container
+    var flow = widget.find('VFlow'), // get the container
         i = 0, 
         firstRow = flow.childViews()[0],    // store current first rendered view
         firstTweet = tweets[0] || {id:-1};  // and current first tweet data
@@ -98,7 +98,7 @@ function updateTweets (data) {
 
 // append tweets to the end of the list
 function appendTweets (data) {
-    var flow = widget.find('VerticalFlow'); // get the container
+    var flow = widget.find('VFlow'); // get the container
     loading = false;
     uki.each(data, function(i, tweet) {
         flow.appendChild(layoutTweet(tweet, flow));

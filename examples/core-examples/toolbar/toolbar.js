@@ -10,7 +10,7 @@
 var html = '<img src="icon.png" width="24" height="24" style="position: absolute; top: 3px; left: -26px;" /> Icon';
 
 uki( 
-    { view: 'HorizontalSplitPane', rect: '1000 600', anchors: 'left top right bottom',
+    { view: 'HSplitPane', rect: '1000 600', anchors: 'left top right bottom',
         handlePosition: 400,
         leftChildViews: { view: 'Box', rect: '400 600', anchors: 'left top right bottom', background: '#EEE', childViews: [
             { view: 'Toolbar', rect: '0 40 400 30', anchors: 'left top right', background: 'theme(panel)', buttons: [

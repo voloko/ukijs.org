@@ -8,15 +8,15 @@
 */
 
 uki(
-    { view: 'HorizontalSplitPane', rect: '1000 600', anchors: 'left top right bottom', handlePosition: 200, rightMin: 500, handleWidth: 1, id: 'top',
+    { view: 'HSplitPane', rect: '1000 600', anchors: 'left top right bottom', handlePosition: 200, rightMin: 500, handleWidth: 1, id: 'top',
         leftPane: {  background: '#FFF' },
-        rightChildViews: { view: 'HorizontalSplitPane', rect: '799 600', anchors: 'left top right bottom', id: 'second',
+        rightChildViews: { view: 'HSplitPane', rect: '799 600', anchors: 'left top right bottom', id: 'second',
             handlePosition: 300, autogrowRight: true, autogrowLeft: false, leftMin: 200, rightMin: 300, handleWidth: 1,
             leftPane: {  background: '#D0D7E2', childViews: [
                     { view: 'Button', rect: '10 566 280 24', anchors: 'bottom left right', text: 'middle pane', focusable: false }
                 ]},
             rightChildViews: [
-                { view: 'VerticalSplitPane', rect: '498 600', anchors: 'left top right bottom',
+                { view: 'VSplitPane', rect: '498 600', anchors: 'left top right bottom',
                     topChildViews: [
                         { view: 'Button', rect: '10 10 280 24', anchors: 'top left', text: 'top pane' },
                         { view: 'Button', rect: '209 160 280 24', anchors: 'bottom right', text: 'top pane' }
@@ -34,6 +34,6 @@ uki(
 
 // when we resize second split pane and hit border, try resizing first pane
 var top = uki('#top')[0];
-uki('HorizontalSplitPane:eq(1)').bind('handleMove', function(e) { 
+uki('HSplitPane:eq(1)').bind('handleMove', function(e) { 
     if (e.handlePosition > e.dragValue) top.handlePosition(top.handlePosition() - (e.handlePosition - e.dragValue) ).layout();
 });

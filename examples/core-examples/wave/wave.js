@@ -31,11 +31,11 @@ function panel (label, args) {
     return uki.extend({}, { view: 'Box', name: 'panel', background: 'theme(panel-blue)', rect: '100 100', anchors: 'left top right bottom' }, args);
 }
 
-uki({ view: 'HorizontalSplitPane', id: 'splitMain', rect: '15 50 975 950', minSize: '800 400', anchors: 'left top right bottom', handleWidth: 15, handlePosition: 166, leftMin: 166, rightMin: 600,
-    leftChildViews: { view: 'VerticalSplitPane', id: 'splitLeft', rect: '166 950', anchors: 'left top right bottom', handleWidth: 16, handlePosition: 200, bottomMin: 230, topMin: 120,
+uki({ view: 'HSplitPane', id: 'splitMain', rect: '15 50 975 950', minSize: '800 400', anchors: 'left top right bottom', handleWidth: 15, handlePosition: 166, leftMin: 166, rightMin: 600,
+    leftChildViews: { view: 'VSplitPane', id: 'splitLeft', rect: '166 950', anchors: 'left top right bottom', handleWidth: 16, handlePosition: 200, bottomMin: 230, topMin: 120,
         topChildViews: panel('Navigation', { rect: '166 200', background: 'theme(panel-white)', childViews: [
             { view: 'ScrollPane', rect: '0 24 166 170', anchors: 'left top right bottom', childViews: [
-                { view: 'VerticalFlow', rect: '0 0 166 168', anchors: 'left top right', childViews: [
+                { view: 'VFlow', rect: '0 0 166 168', anchors: 'left top right', childViews: [
                     menuButton('Inbox', '-176px 0', '166 24'), menuButton('All', '-160px 0', '0 2 166 24'), menuButton('By me', '-192px 0', '0 0 166 24'), menuButton('Requests', '-240px 0', '0 0 166 24'), menuButton('Spam', '-208px 0', '0 0 166 24'), menuButton('Settings', '-240px 0', '0 0 166 24'), menuButton('Trash', '-223px 0', '0 0 166 24')
                 ] }
             ] }
@@ -56,7 +56,7 @@ uki({ view: 'HorizontalSplitPane', id: 'splitMain', rect: '15 50 975 950', minSi
             ] }
         ] })
     },
-    rightChildViews: { view: 'HorizontalSplitPane', id: 'splitRight', rect: '795 950', anchors: 'left top right bottom', handleWidth: 15, handlePosition: 300, leftMin: 300, rightMin: 300,
+    rightChildViews: { view: 'HSplitPane', id: 'splitRight', rect: '795 950', anchors: 'left top right bottom', handleWidth: 15, handlePosition: 300, leftMin: 300, rightMin: 300,
         leftChildViews: panel('Inbox 1 - 4 of 4', { rect: '300 930', childViews: [
             { view: 'Box', rect: '0 23 300 56', background: 'theme(box-lblue)', anchors: 'left top right', childViews: [
                 { view: 'Button', rect: '7 16 70 24', anchors: 'left top', text: 'New wave', style: { fontWeight: 'normal', fontSize: '11px' }, focusable: false },

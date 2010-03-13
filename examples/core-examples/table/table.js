@@ -24,7 +24,7 @@ function formatHlted (t) {
     return hlt ? (t || '').replace(hlt, '<strong>' + hlt + '</strong>') : t;
 }
 
-uki({ view: 'HorizontalSplitPane', rect: '1000 1000', anchors: 'left top right bottom', handleWidth: 1, handlePosition: 199,
+uki({ view: 'HSplitPane', rect: '1000 1000', anchors: 'left top right bottom', handleWidth: 1, handlePosition: 199,
         leftMin: 150, rightMin: 400,
         leftPane: { background: '#D0D7E2', childViews: [ // search panel
             { view: 'TextField', rect: '5 18 189 22', anchors: 'left top right', placeholder: 'search' }

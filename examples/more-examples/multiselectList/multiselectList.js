@@ -15,7 +15,7 @@ for (var i=3; i < 30000; i++) {
 };
 
 var p = uki(
-    { view: 'HorizontalSplitPane', rect: '1000 600', anchors: 'top left right bottom', handleWidth: 1,
+    { view: 'HSplitPane', rect: '1000 600', anchors: 'top left right bottom', handleWidth: 1,
         leftMin: 200, rightMin: 400, handlePosition: 200,
         leftChildViews: [ // scrollable list on the left
             { view: 'ScrollPane', rect: '200 600', anchors: 'top left right bottom',
