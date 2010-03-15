@@ -5,7 +5,7 @@
     <style>body, html { overflow: hidden; margin: 0; padding: 0; }</style>
     <div id="test" style="width: 90%; height: 300px;"></div>
     <script src="/src/uki.cjs"></script>
-    <script src="controlls.js"></script>
+    <script src="controls.js"></script>
 */
 
 
