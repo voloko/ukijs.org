@@ -22,7 +22,7 @@ var p = uki(
                 childViews: { view: 'Box', rect: '10 10 180 900002', anchors: 'top left right', background: '#CCC',
                     // with indierect child list
                     childViews: { view: 'List', rect: '1 1 178 900000', anchors: 'top left right', 
-                            data: data, rowHeight: 30, id: 'list', throttle: 0 }
+                            data: data, rowHeight: 30, id: 'list', throttle: 0, multiselect: true, textSelectable: false }
                 }
             }
         ],

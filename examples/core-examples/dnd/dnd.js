@@ -2,7 +2,7 @@
 @example_title Drag and Drop
 @example_order 400 
 @example_html
-    <style>body, html { margin: 0; padding: 0; };</style>
+    <style>body, html { margin: 0; padding: 0; overflow: hidden };</style>
     <div id="draggable" draggable="true"  unselectable="unselectable"
         style="position:absolute;left:600px;top:50px;width:100px;height:100px; 
                line-height:100px;font-size:18px;background:#CCF;font-family:sans-serif;text-align:center;
@@ -18,10 +18,10 @@ uki([
         html: '&larr; Drag items from the list on the left or from &darr; the draggable div ' },
     { view: 'ScrollableList', rect: '0 0 300 600', anchors: 'left top bottom', id: 'source', 
         draggable: true, textSelectable: false, multiselect: true },
-    { view: 'Label', rect: '350 50 200 200', anchors: 'left top', text: 'drop target', 
+    { view: 'Label', rect: '350 50 150 150', anchors: 'left top', text: 'drop target', 
         style: { fontSize: '25px', textAlign: 'center' }, 
         background: 'cssBox(border:2px dashed #CCC; background:#EEE)', name: 'target' },
-    { view: 'Label', rect: '350 300 200 200', anchors: 'left top', text: 'drop target', 
+    { view: 'Label', rect: '350 250 150 150', anchors: 'left top', text: 'drop target', 
         style: { fontSize: '25px', textAlign: 'center' }, 
         background: 'cssBox(border:2px dashed #CCC; background:#EEE)', name: 'target' }
 ]).attachTo(window, '1000 600');

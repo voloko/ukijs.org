@@ -49,14 +49,16 @@ var VimeoVideo = uki.newClass(uki.view.Base, new function() {
         Base.layout.call(this);
     };
 });
+
 var videos = [];
 var urls = [
     'http://vimeo.com/moogaloop.swf?clip_id=8995996&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1',
     'http://vimeo.com/moogaloop.swf?clip_id=9020120&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1',
-    'http://vimeo.com/moogaloop.swf?clip_id=9020286&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1'
+    'http://vimeo.com/moogaloop.swf?clip_id=9020286&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1',
+    'http://vimeo.com/moogaloop.swf?clip_id=10205134&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1'
 ];
 
-uki.each([1, 2, 3], function(i, n) {
+uki.each([1, 2, 3, 4], function(i, n) {
     uki.dom.bind(document.getElementById('screencast' + n), 'click', function() {
         if (!videos[i]) {
             videos[i] = uki({ 

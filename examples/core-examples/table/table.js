@@ -39,7 +39,7 @@ uki({ view: 'HSplitPane', rect: '1000 1000', anchors: 'left top right bottom', h
                 { view: 'table.CustomColumn', label: 'Genre', resizable: true, width: 100 },
                 { view: 'table.NumberColumn', label: 'Rating', resizable: true, width: 30 },
                 { view: 'table.NumberColumn', label: 'Play Count', resizable: true, width: 30 }
-            ] },
+            ], multiselect: true },
             { view: 'Label', rect: '200 200 400 20', anchors: 'top', textAlign: 'center', text: 'Loading...', id: 'loading' }
         ]
     }

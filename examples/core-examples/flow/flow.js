@@ -9,13 +9,13 @@
 
 // vertical flow with a single label on the left of the page
 uki({ view: 'VFlow', rect: '10 10 100 0', anchors: 'left top', background: '#CCC', className: 'flow', childViews: [
-    { view: 'Label', rect: '0 0 100 100', anchors: 'left top', inset: '1 5', multiline: true, html: '<a href="#">Link 1</a>' }
+    { view: 'Label', rect: '0 0 100 100', anchors: 'left top', inset: '1 5', html: '<a href="#">Link 1</a>' }
 ]}).attachTo(window, '100 100');
 
 // horizontal flow with 2 labels at the top of the page
-uki({ view: 'HFlow', rect: '120 10 0 100', anchors: 'left top', background: '#CCC', horizontal: true, className: 'flow', childViews: [
-    { view: 'Label', rect: '0 0 100 100', anchors: 'left top', inset: '1 5', multiline: true, html: '<a href="#">Link 1</a>' },
-    { view: 'Label', rect: '0 0 100 100', anchors: 'left top', inset: '1 5', multiline: true, html: '<a href="#">Link 2</a>' }
+uki({ view: 'HFlow', rect: '120 10 0 100', anchors: 'left top', background: '#CCC', className: 'flow', childViews: [
+    { view: 'Label', rect: '0 0 100 20', anchors: 'left top', inset: '1 5', html: '<a href="#">Link 1</a>' },
+    { view: 'Label', rect: '0 0 100 20', anchors: 'left top', inset: '1 5', html: '<a href="#">Link 2</a>' }
 ]}).attachTo(window, '100 100');
 
 // append 10 labels with links to each flow

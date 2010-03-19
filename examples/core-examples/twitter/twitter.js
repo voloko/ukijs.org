@@ -10,6 +10,7 @@
 
 
 var tweets = [],     // loaded tweets
+    tweetMap = {},   // map of tweet_id -> tweet
     loading = false; // are we loading now
 
 // custom background for a tweet
@@ -30,7 +31,7 @@ var widget = uki({
     childViews: [
         { view: 'Box', rect: '200 51',                               // top panel, with default uki panel bg
             anchors: 'left top right', background: 'theme(panel)',   // width grows, height fixed to 51 
-            childViews: [
+            style: { zIndex: 200 }, childViews: [
                 { view: 'MultilineTextField', rect: '5 5 130 42',    // Tweet input field
                     anchors: 'left top right', 
                     placeholder: "What's happening?", fontSize: '12px' },
@@ -40,7 +41,9 @@ var widget = uki({
         { view: 'ScrollPane', rect: '0 50 200 250',                  // Scrollable tweet container
             anchors: 'left top right bottom', childViews: [
                 { view: 'VFlow',  rect: '5 5 190 250',        // Flow of tweet views
-                    anchors: 'left top right bottom' }
+                    anchors: 'left top right bottom', childViews: [
+                        { view: 'Image', rect: '100 0 32 32', anchors: 'left top', src: 'i/loading.gif' }
+                    ] }
             ] }
     ]
 });
@@ -67,7 +70,7 @@ function layoutTweet (tweet, flow) {
                 src: tweet.user.profile_image_url },
             { view: 'Label', rect: '65 10 120 40', anchors: 'left top right', // tweet text
                 multiline: true, html: tweetTemplate.render(data), 
-                fontSize: '11px', lineHeight: '13px' }
+                fontSize: '11px', lineHeight: '13px', textSelectable: true }
         ]
     });
     
@@ -86,25 +89,36 @@ function updateTweets (data) {
     var flow = widget.find('VFlow'), // get the container
         i = 0, 
         firstRow = flow.childViews()[0],    // store current first rendered view
-        firstTweet = tweets[0] || {id:-1};  // and current first tweet data
+        firstTweet = tweets[0] || {id:-1},  // and current first tweet data
+        ending = uki('> :last', flow);
         
-    while (data[i] && data[i].id != firstTweet.id) { // while new tweets
+    flow.removeChild(ending[0]);
+    while (data[i] && !tweetMap[data[i].id]) { // while new tweets
+        tweetMap[data[i].id] = data[i];
         flow.insertBefore(layoutTweet(data[i], flow), firstRow); // insert new tweet view
-        tweets.unshift(data[i++]);                               // ... add tweet to loaded tweets
+        tweets.unshift(data[i++]);                              // ... add tweet to loaded tweets
     }
+    flow.appendChild(ending[0]);
     flow.resizeToContents('height'); // resize list to contents
     flow.parent().layout();          // update dom
 }
 
 // append tweets to the end of the list
 function appendTweets (data) {
-    var flow = widget.find('VFlow'); // get the container
-    loading = false;
-    uki.each(data, function(i, tweet) {
-        flow.appendChild(layoutTweet(tweet, flow));
-        tweets.push(tweet);
-    });
+    var flow = widget.find('VFlow'), // get the container
+        ending = uki('> :last', flow);
 
+    loading = false;
+    flow.removeChild(ending[0]);
+    uki.each(data, function(i, tweet) {
+        if (!tweetMap[data[i].id]) {
+            tweetMap[data[i].id] = data[i];
+            flow.appendChild(layoutTweet(tweet, flow));
+            tweets.push(tweet);
+        }
+    });
+    flow.appendChild(ending[0]);
+    // if (data.length < 20) ending.visible(false)
     flow.resizeToContents('height'); // resize list to contents
     flow.parent().layout();          // update dom
 }
@@ -132,6 +146,7 @@ function jsonp (url, callback) {
     var name = 'jsonp' +  +new Date,
         script = document.createElement('script'),
         head = document.getElementsByTagName('head')[0];
+    name = 'jsonp1268984584605';
     window[name] = callback;
     script.src = url.replace(/=\?/, '=' + name);
     head.insertBefore(script, head.firstChild);
@@ -141,7 +156,7 @@ function jsonp (url, callback) {
 widget.find('ScrollPane').scroll(function() {
     if (this.contentsSize().height - this.scrollTop() - this.rect().height < 50) {
         if (!loading && tweets.length) {
-            jsonp('http://api.twitter.com/1/statuses/home_timeline.json?callback=?&since_id=' + tweets[tweets.length - 1].id, appendTweets);
+            jsonp('http://api.twitter.com/1/statuses/home_timeline.json?callback=?&max_id=' + tweets[tweets.length - 1].id, appendTweets);
             loading = true;
         }
     }

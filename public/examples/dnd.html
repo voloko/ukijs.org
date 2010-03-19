@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<head>
+  <title> Drag and Drop</title>
+</head>
+<body>
+  
+      <style>body, html { margin: 0; padding: 0; };</style>
+      <div id="draggable" draggable="true"  unselectable="unselectable"
+          style="position:absolute;left:600px;top:50px;width:100px;height:100px; 
+                 line-height:100px;font-size:18px;background:#CCF;font-family:sans-serif;
+                 text-align:center;-webkit-user-drag:element;-webkit-user-select:none;
+                 -moz-user-select:none">
+          draggable
+      </div>
+      <script src="http://static.ukijs.org/pkg/0.1.0a1/uki.js"></script>
+      <script type="text/javascript">
+      uki([
+          { view: 'Label', rect: '350 10 100 20', anchors: 'left top', style: { fontSize: '14px' },
+              html: '&larr; Drag items from the list on the left or from &darr; the draggable div ' },
+          { view: 'ScrollableList', rect: '0 0 300 600', anchors: 'left top bottom', id: 'source', 
+              draggable: true, textSelectable: false, multiselect: true },
+          { view: 'Label', rect: '350 50 150 150', anchors: 'left top', text: 'drop target', 
+              style: { fontSize: '25px', textAlign: 'center' }, 
+              background: 'cssBox(border:2px dashed #CCC; background:#EEE)', name: 'target' },
+          { view: 'Label', rect: '350 250 150 150', anchors: 'left top', text: 'drop target', 
+              style: { fontSize: '25px', textAlign: 'center' }, 
+              background: 'cssBox(border:2px dashed #CCC; background:#EEE)', name: 'target' }
+      ]).attachTo(window, '1000 600');
+
+      var data = [];
+      for (var i=0; i < 8000; i++) {
+          data[i] = 'Row ' + Math.random();
+      };
+      uki('#source List')
+          .data(data)
+          .dragstart(function(e) {
+              e.dataTransfer.setDragImage(uki({ view: 'Label', rect: '100 20', anchors: 'left top', 
+                  inset: '0 5', background: 'cssBox(border: 1px solid #CCC;background:#EEF)', 
+                  text: this.selectedIndexes().length + ' rows' })
+                  , 10, 10);
+              e.dataTransfer.effectAllowed = 'copy';
+              e.dataTransfer.setData('text/plain', this.selectedRows().join('\n'));
+          });
+
+
+      uki.dom.bind(document.getElementById('draggable'), 'dragstart', function(e) {
+          e.dataTransfer.setDragImage(uki.createElement('div', 'background:blue;width:20px;height:20px'), 5, 5);
+          e.dataTransfer.effectAllowed = 'copy';
+          e.dataTransfer.setData('text/plain', 'test');
+      });
+
+
+      uki('[name=target]')
+          .dragover(function(e) {
+              e.preventDefault();
+              e.dataTransfer.dropEffect = 'copy';
+          })
+          .dragenter(function(e) {
+              this.text('over');
+          })
+          .dragleave(function(e) {
+              this.text('drop target');
+          })
+          .drop(function(e) {
+              e.preventDefault();
+              this.text('droped');
+              alert(e.dataTransfer.getData('text/plain'))
+              setTimeout(uki.proxy(function() {
+                  this.text('drop target');
+              }, this), 100)
+          });
+      </script>
+</body>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="moikrug" default="deploy">
+    <dirname property="project.dir" file="${ant.file}"/>
+	<property name="rsync.cmd" value="rsync"/>
+		
+    <target name="deploy">
+        <exec executable="${rsync.cmd}">
+            <arg value="-vazC" />
+            <arg value="--delete" />
+            <arg value="--exclude" />
+            <arg value="build.xml" />
+            <arg value="--exclude" />
+            <arg value="*.pid" />
+            <arg value="--exclude" />
+            <arg value="*.log" />
+            <arg value="-e" /><arg value="ssh" />
+            <arg value="${project.dir}/public/examples/" />
+            <!-- <arg value="ukijs.org:/var/www/ukijs/public/" /> -->
+            <arg value="ukijs.org:/var/www/ukijs.org/public/examples/" />
+        </exec>
+    </target>
+</project>
