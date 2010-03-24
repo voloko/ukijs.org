@@ -13,24 +13,24 @@ uki(
     { view: 'HSplitPane', rect: '1000 600', anchors: 'left top right bottom',
         handlePosition: 400,
         leftChildViews: { view: 'Box', rect: '400 600', anchors: 'left top right bottom', background: '#EEE', childViews: [
-            { view: 'Toolbar', rect: '0 40 400 30', anchors: 'left top right', background: 'theme(panel)', buttons: [
-                { text: 'Edit', size: '24 24', name: 'edit' },
-                { text: 'Push the button', size: '24 24', name: 'push'},
-                { text: 'Shorter 1', size: '24 24', name: 'shorter 1'},
-                { text: 'Shorter 2', size: '24 24', name: 'shorter 2'},
-                { text: 'Shorter 3', size: '24 24', name: 'shorter 3'},
-                { text: 'Shorter 4', size: '24 24', name: 'shorter 4'},
-                { text: 'Shorter x5', size: '24 24', name: 'shorter 5'},
-                { text: 'Shorter 1', size: '24 24', name: 'shorter 1'},
-                { text: 'Shorter 21', size: '24 24', name: 'shorter 2'},
-                { text: 'Shorter 3', size: '24 24', name: 'shorter 3'},
-                { text: 'Shorter 4', size: '24 24', name: 'shorter 4'},
-                { text: 'Shorter 5', size: '24 24', name: 'shorter 5'},
-                { text: 'Shorter 1', size: '24 24', name: 'shorter 1'},
-                { text: 'Shorter 2', size: '24 24', name: 'shorter 2'},
-                { text: 'Shorter 3', size: '24 24', name: 'shorter 3'},
-                { text: 'Shorter 4', size: '24 24', name: 'shorter 4'},
-                { text: 'Shorter 5', size: '24 24', name: 'shorter 5'}
+            { view: 'Toolbar', rect: '0 40 400 24', anchors: 'left top right', background: 'theme(panel)', buttons: [
+                { text: 'Edit' },
+                { text: 'Push the button'},
+                { text: 'Shorter 1'  },
+                { text: 'Shorter 2'  },
+                { text: 'Shorter 3'  },
+                { text: 'Shorter 4'  },
+                { text: 'Shorter x5' },
+                { text: 'Shorter 1'  },
+                { text: 'Shorter 21' },
+                { text: 'Shorter 3'  },
+                { text: 'Shorter 4'  },
+                { text: 'Shorter 5'  },
+                { text: 'Shorter 1'  },
+                { text: 'Shorter 2'  },
+                { text: 'Shorter 3'  },
+                { text: 'Shorter 4'  },
+                { text: 'Shorter 5'  }
             ]}
         ]},
         rightChildViews: { view: 'Button', rect: '0 0 100 100', anchors: 'left top', text: 'hello world', id: 'button', focusable: false }

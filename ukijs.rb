@@ -72,7 +72,7 @@ class Ukijs < Sinatra::Base
         :title => extract_example_title(File.join(path, name)),
         :order => extract_example_order(File.join(path, name)) 
       }
-    end.sort { |e1, e2| e1[:order] <=> e2[:order] }
+    end.sort { |e1, e2| e1[:order] <=> e2[:order] }.select { |e| e[:order] > 0 }
     haml :exampleList, :locals => { :exampleList => exampleList }
   end
   

@@ -15,7 +15,7 @@
  
 uki([
     { view: 'Label', rect: '350 10 100 20', anchors: 'left top', style: { fontSize: '14px' },
-        html: '&larr; Drag items from the list on the left or from &darr; the draggable div ' },
+        html: '&larr; Drag items from the list on the left or from &darr; the draggable div. <a href="http://github.com/voloko/ukijs.org/blob/master/examples/core-examples/dnd/dnd.js">Source</a>, <a href="http://blog.ukijs.org/2010/03/16/drag-and-drop-in-uki/">about</a> ' },
     { view: 'ScrollableList', rect: '0 0 300 600', anchors: 'left top bottom', id: 'source', 
         draggable: true, textSelectable: false, multiselect: true },
     { view: 'Label', rect: '350 50 150 150', anchors: 'left top', text: 'drop target', 
@@ -39,7 +39,7 @@ uki('#source List')
             , 10, 10);
         e.dataTransfer.effectAllowed = 'copy';
         e.dataTransfer.setData('text/plain', this.selectedRows().join('\n'));
-    });
+    }).parent().layout();
     
 
 uki.dom.bind(document.getElementById('draggable'), 'dragstart', function(e) {

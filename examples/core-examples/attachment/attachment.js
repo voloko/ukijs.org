@@ -9,9 +9,9 @@
 
 uki({
     view: 'Button',
-    rect: '200px 40px 200px 24px',
+    rect: '200 40 200 24',
     text: 'uki is awesome!'
-}).attachTo( document.getElementById('test'), '600px 100px' );
+}).attachTo( document.getElementById('test'), '600 100' );
 
 uki('Button[text^=uki]').bind('click', function() {
     alert('Hello world!');

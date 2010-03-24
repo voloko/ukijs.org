@@ -9,6 +9,6 @@
 */
 
 uki([
-    { view: 'uki.more.view.ToggleButton', rect: '90px 40px 100px 24px', text: 'Toggle me' },
+    { view: 'uki.more.view.ToggleButton', rect: '90 40 100 24', text: 'Toggle me' },
     { view: 'uki.more.view.ToggleButton', rect: '210 40 100 24', text: 'Me to' }
-]).attachTo( document.getElementById('test'), '400px 100px' );
+]).attachTo( document.getElementById('test'), '400 100' );

@@ -9,9 +9,9 @@
 */
 
 uki([
-    { view: 'uki.more.view.RadioButton', rect: '15px 40px 70px 24px', text: 'Group 1', group: 'group_1' },
+    { view: 'uki.more.view.RadioButton', rect: '15 40 70 24', text: 'Group 1', group: 'group_1' },
     { view: 'uki.more.view.RadioButton', rect: '90 40 70 24', text: 'Group 1', group: 'group_1' },
     
-    { view: 'uki.more.view.RadioButton', rect: '200px 40px 70px 24px', text: 'Group 2', group: 'group_2' },
+    { view: 'uki.more.view.RadioButton', rect: '200 40 70 24', text: 'Group 2', group: 'group_2' },
     { view: 'uki.more.view.RadioButton', rect: '275 40 70 24', text: 'Group 2', group: 'group_2', checked: true }
-]).attachTo( document.getElementById('test'), '400px 100px' );
+]).attachTo( document.getElementById('test'), '400 100' );

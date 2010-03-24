@@ -11,7 +11,7 @@
 function button (i) {
     return uki.build({
         view: 'Button',
-        rect: '5 ' + i * 30 + ' ' + (700 - i) +  ' 25px',
+        rect: '5 ' + i * 30 + ' ' + (700 - i) +  ' 25',
         anchors: 'top left right',
         autosize: 'width',
         text: 'button #' + (i + 1)
@@ -20,7 +20,7 @@ function button (i) {
 
 var c = uki({
     view: 'Box',
-    rect: '0 0 800px 1000px',
+    rect: '0 0 800 1000',
     anchors: 'top bottom right left',
     autosize: 'width height'
 });

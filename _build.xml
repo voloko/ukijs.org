@@ -14,9 +14,9 @@
             <arg value="--exclude" />
             <arg value="*.log" />
             <arg value="-e" /><arg value="ssh" />
-            <arg value="${project.dir}/public/examples/" />
+            <arg value="${project.dir}/" />
             <!-- <arg value="ukijs.org:/var/www/ukijs/public/" /> -->
-            <arg value="ukijs.org:/var/www/ukijs.org/public/examples/" />
+            <arg value="ukijs.org:/var/www/ukijs.org/" />
         </exec>
     </target>
 </project>
