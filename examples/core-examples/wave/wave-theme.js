@@ -242,6 +242,17 @@
                     'px;position:absolute;top:', (params.height - params.size.height)/2, 'px;left:-',params.size.width + 4,'px"></div>'
                 ];
             }
+        },
+        styles: {
+            base: function() {
+                return 'font-family:Arial,Helvetica,sans-serif;';
+            },
+            'label': function() {
+                return 'font-size:12px;'
+            },
+            'button': function() {
+                return 'color:#333;text-align:center;'
+            }
         }
         
     });

@@ -6,7 +6,7 @@
   %head
     %meta{ "http-equiv" => "Content-type", "content" => "text/html; charset=utf-8" }
     %title UKI &mdash; Simple UI Kit for complex web apps
-    %link{ :rel => 'stylesheet', :href => '/css/master.css', :type => 'text/css', :media => 'screen' }
+    %link{ :rel => 'stylesheet', :href => '/css/master.css?2', :type => 'text/css', :media => 'screen' }
     %script{ :src => '/src/uki.cjs', :type => 'text/javascript' }
   
   %body
@@ -27,8 +27,10 @@
       .links
         %h3 Links
         %ul
+          %li 
+            Mac Mail.app <a href="http://ukijs.org/mail/index.html">web clone demo</a>
+            %sup.new new
           %li Play with simple <a href="http://jsbin.com/iqite/edit">twitter widget</a> code 
-          %li Draft <a href="/docs/">API docs</a> for uki-core
           %li Google wave <a href="/examples/core-examples/wave/" target="_blank">layout</a> in <a href="http://github.com/voloko/ukijs.org/blob/master/examples/core-examples/wave/wave.js" target="_blank">100 lines</a> of uki code
       %p.slogan
         Uki is a <em>fast</em> and <em>simple</em> JavaScript user interface toolkit for desktop-like web applications.<br />
@@ -44,6 +46,9 @@
         %span.variant 
           %a{:href => "http://static.ukijs.org/pkg/#{version}/uki.dev.js"} development
           = "(#{dev_size / 1024}KB, with comments)"
+      %p.install
+        Install development tools <a href="http://github.com/voloko/uki-tools">uki-tools</a> 
+        %sup.new new
       .example
         %table
           %tr

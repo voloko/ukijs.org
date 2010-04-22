@@ -32,4 +32,4 @@ uki('HSplitPane Slider').bind('change', function() {
 // on button click clear the text field
 uki('Button[text~="Clear"]').bind('click', function() {
     uki('#field').value('') // find by id
-});
+}).parent();

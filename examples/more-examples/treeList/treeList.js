@@ -13,7 +13,11 @@ sampleData = [
     { data: 'Sample value' },
     { data: 'Sample value', children: [
         { data: 'Sample sub value' },
-        { data: 'Sample sub value' },
+        { data: 'Sample sub value', children: [
+            { data: 'Sample sub value' },
+            { data: 'Sample sub value' },
+            { data: 'Sample sub value' }
+        ] },
         { data: 'Sample sub value' }
     ] },
     { data: 'Sample value' },
@@ -26,5 +30,6 @@ uki({
     anchors: 'left top bottom', 
     data: sampleData,
     rowHeight: 22,
-    style: {fontSize: '12px'}
+    style: {fontSize: '12px'},
+    multiselect: true
 }).attachTo(window, '1000 1000')

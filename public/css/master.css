@@ -71,7 +71,7 @@ p.slogan {
 p.download {
     font-size: 15px;
     color: #333;
-    margin: 0 0 60px 50px;
+    margin: 0 0 10px 50px;
     width: 670px;
 }
 
@@ -88,6 +88,17 @@ p.download {
     p.download a {
         font-size: 16px;
     }
+    
+p.install {
+    margin: 0 0 30px 50px;
+    width: 670px;
+    font-size: 14px;
+}
+
+    sup.new {
+        color: #C00;
+    }
+    
     
 .menu {
     list-style: none;

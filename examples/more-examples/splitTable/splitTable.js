@@ -1,11 +1,12 @@
 /**
-@example_title Table
-@example_order 42
+@example_title uki.more SplitTable
+@example_order 4107
 @example_html
     <style>body, html { margin: 0; padding: 0; overflow:hidden; };</style>
     <script src="/src/uki.cjs"></script>
+    <script src="/src/uki-more.cjs"></script>
     <script src="searchable.js"></script>
-    <script src="table.js"></script>
+    <script src="splitTable.js"></script>
 */
 
 
@@ -30,16 +31,17 @@ uki({ view: 'HSplitPane', rect: '1000 1000', anchors: 'left top right bottom', h
             { view: 'TextField', rect: '5 18 189 22', anchors: 'left top right', placeholder: 'search' }
         ] },
         rightChildViews: [ // table with resizable columns
-            { view: 'Table', rect: '0 0 800 1000', minSize: '0 200', anchors: 'left top right bottom', columns: [
-                { view: 'table.NumberColumn', label: 'ID', width: 40 },
+            { view: 'uki.more.view.SplitTable', rect: '10 10 780 980', minSize: '0 200', anchors: 'left top right bottom', columns: [
+                // left part
                 { view: 'table.CustomColumn', label: 'Name', resizable: true, minWidth: 100, width: 250, formatter: formatHlted },
+                // right part
                 { view: 'table.NumberColumn', label: 'Time', resizable: true, width: 50, formatter: formatTime },
                 { view: 'table.CustomColumn', label: 'Artist', resizable: true, minWidth: 100, width: 150, formatter: formatHlted },
                 { view: 'table.CustomColumn', label: 'Album', resizable: true, minWidth: 100, width: 150, formatter: formatHlted },
                 { view: 'table.CustomColumn', label: 'Genre', resizable: true, width: 100 },
                 { view: 'table.NumberColumn', label: 'Rating', resizable: true, width: 30 },
                 { view: 'table.NumberColumn', label: 'Play Count', resizable: true, width: 30 }
-            ], multiselect: true, style: {fontSize: '11px', lineHeight: '11px'} },
+            ], multiselect: true, textSelectable: false, style: {fontSize: '11px'} },
             { view: 'Label', rect: '200 200 400 20', anchors: 'top', textAlign: 'center', text: 'Loading...', id: 'loading' }
         ]
     }
@@ -48,9 +50,13 @@ uki({ view: 'HSplitPane', rect: '1000 1000', anchors: 'left top right bottom', h
 // searchable model
 window.DummyModel = uki.newClass(Searchable, new function() {
     this.init = function(data) {
-        this.items = data;
-        uki.each(this.items, function(i, row) {
-            row.searchIndex = row[1].toLowerCase();
+        this.items = uki.map(data, function(row) {
+            row = row.slice(1);
+            row.searchIndex = row[0].toLowerCase();
+            // var tmp = row[2];
+            // row[2] = row[3];
+            // row[3] = tmp;
+            return row;
         })
     };
     
@@ -64,7 +70,7 @@ window.onLibraryLoad = function(data) {
     uki('#loading').visible(false);
     var model = new DummyModel(data),
         lastQuery = '',
-        table = uki('Table');
+        table = uki('SplitTable');
         
     model.bind('search.foundInChunk', function(chunk) {
         table.data(table.data().concat(chunk)).layout();

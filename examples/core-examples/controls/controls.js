@@ -16,14 +16,14 @@ function views() {
         { view: 'MultilineTextField', rect: '10 35 200 40', anchors: 'left top', value: 'textarea' },
         
         { view: 'Checkbox', rect: '250 10 24 24',  anchors: 'left top', name: 'probe' },
-        { view: 'Label',    rect: '275 10 100 24', anchors: 'left top', html: 'Checkbox 1', selectable: false },
+        { view: 'Label',    rect: '275 10 100 24', anchors: 'left top', html: 'Checkbox 1' },
         { view: 'Checkbox', rect: '250 35 24 24',  anchors: 'left top', checked: true },
-        { view: 'Label',    rect: '275 35 100 24', anchors: 'left top', text: 'Checkbox 2', selectable: false },
+        { view: 'Label',    rect: '275 35 100 24', anchors: 'left top', text: 'Checkbox 2' },
         
         { view: 'Radio',    rect: '720 10 24 24',  anchors: 'left top', name: 'probe', group: 'radio_1' },
-        { view: 'Label',    rect: '745 10 100 24', anchors: 'left top', html: 'Radio 1', selectable: false },
+        { view: 'Label',    rect: '745 10 100 24', anchors: 'left top', html: 'Radio 1' },
         { view: 'Radio',    rect: '720 35 24 24',  anchors: 'left top', checked: true, group: 'radio_1' },
-        { view: 'Label',    rect: '745 35 100 24', anchors: 'left top', text: 'Radio 2', selectable: false },
+        { view: 'Label',    rect: '745 35 100 24', anchors: 'left top', text: 'Radio 2' },
         
         { view: 'TextField',rect: '400 10 100 24', anchors: 'left top', value: "Small input", placeholder: 'text' },
         { view: 'Button',   rect: '510 10 200 24', anchors: 'left top', text: 'button without focus!', focusable: false },
