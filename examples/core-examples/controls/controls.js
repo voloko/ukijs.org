@@ -26,6 +26,7 @@ function views() {
         { view: 'Label',    rect: '745 35 100 24', anchors: 'left top', text: 'Radio 2' },
         
         { view: 'TextField',rect: '400 10 100 24', anchors: 'left top', value: "Small input", placeholder: 'text' },
+        { view: 'PasswordTextField',rect: '400 36 100 24', anchors: 'left top', value: "Small input", placeholder: 'text' },
         { view: 'Button',   rect: '510 10 200 24', anchors: 'left top', text: 'button without focus!', focusable: false },
         { view: 'TextField',rect: '820 10 100 34', anchors: 'right top', value: "Big input" },
         { view: 'Slider',   rect: '400 65 150 24', anchors: 'right top left width' }
