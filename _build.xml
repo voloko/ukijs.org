@@ -15,8 +15,8 @@
             <arg value="*.log" />
             <arg value="-e" /><arg value="ssh" />
             <!-- <arg value="${project.dir}/" /> -->
-            <arg value="${project.dir}/views/index.haml" />
-            <arg value="ukijs.org:/var/www/ukijs.org/views/index.haml" />
+            <arg value="${project.dir}/public/docs/" />
+            <arg value="ukijs.org:/var/www/ukijs.org/public/docs/" />
             <!-- <arg value="ukijs.org:/var/www/ukijs.org/" /> -->
         </exec>
     </target>

@@ -12,8 +12,8 @@ def list_examples(path)
   result = []
   Dir.new(path).each { |name| 
     if File.exist?(File.join(path, name, name + '.js'))
-      result << name
-    elsif !name.start_with?('.')
+      result << "#{name}/"
+    elsif !name.start_with?('.') && File.directory?(File.join(path, name))
       result += list_examples(File.join(path, name)).map do |subname|
         File.join(name, subname)
       end

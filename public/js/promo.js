@@ -63,7 +63,7 @@ uki.each([1, 2, 3, 4], function(i, n) {
         if (!videos[i]) {
             videos[i] = uki({ 
                 view: 'VimeoVideo', rect: '200 -100 600 375', movieSize: '600 375', 
-                shadow: 'theme(shadow-big)',
+                background: 'theme(shadow-big)',
                 movieSrc: urls[i],
                 anchors: 'left top' 
             }).attachTo(document.getElementById('screencasts'));

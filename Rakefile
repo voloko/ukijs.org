@@ -6,7 +6,7 @@ desc "Build docs"
 task :docs do
   base = File.dirname(__FILE__)
   Dir.chdir '../uki'
-  `java -jar ../jsdoc-toolkit/jsdoc-toolkit/jsrun.jar ../jsdoc-toolkit/jsdoc-toolkit/app/run.js -a -t=../jsdoc-toolkit/jsdoc-toolkit/templates/uki src/uki-core/** -d=../ukijs.org/public/docs`
+  `java -jar ../jsdoc-toolkit/jsdoc-toolkit/jsrun.jar ../jsdoc-toolkit/jsdoc-toolkit/app/run.js -a -t=../jsdoc-toolkit/jsdoc-toolkit/templates/uki src/uki-core/** src/uki-view/** -d=../ukijs.org/public/docs`
   Dir.chdir base
 end
 
@@ -24,34 +24,49 @@ task :version_info do
   File.open(target_path, 'w') { |f| f.write info.to_json }
 end
 
+desc "Run nginx host"
+task :nginx do
+  sh "sudo /opt/local/sbin/nginx ;"
+end
+
+desc "Kill nginx"
+task :kill_nginx do
+  sh "sudo kill `cat /opt/local/var/log/nginx/nginx.pid`"
+end
+
+desc "Restart nginx"
+task :restart_nginx, :needs => [:kill_nginx, :nginx] do
+end
+
+
 desc "Run thin development"
 task :start do
-  sh "thin -C dev.yaml start"
+  sh "thin -C conf/dev.yaml start"
 end
 
 desc "Run thin"
 task :restart do
-  sh "thin -C dev.yaml restart"
+  sh "thin -C conf/dev.yaml restart"
 end
 
 desc "Stop thin"
 task :stop do
-  sh "thin -C dev.yaml stop"
+  sh "thin -C conf/dev.yaml stop"
 end
 
 namespace :prod do
   desc "Run thin development"
   task :start do
-    sh "thin -s 3 -C prod.yaml start"
+    sh "thin -s 3 -C conf/prod.yaml start"
   end
 
   desc "Run thin"
   task :restart do
-    sh "thin -s 3 -C prod.yaml restart"
+    sh "thin -s 3 -C conf/prod.yaml restart"
   end
 
   desc "Stop thin"
   task :stop do
-    sh "thin -s 3 -C prod.yaml stop"
+    sh "thin -s 3 -C conf/prod.yaml stop"
   end
 end

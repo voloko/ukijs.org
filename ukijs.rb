@@ -3,36 +3,42 @@ require 'haml'
 require 'json'
 require 'lib/helpers'
 require 'net/http'
+require 'uki/builder'
 
 SERVER_ROOT = File.expand_path(File.dirname(__FILE__))
+UKI_ROOT = File.join(SERVER_ROOT, '../uki');
 DEVELOPMENT = ENV['RACK_ENV'] == 'development'
-
-UKI_HOST = '127.0.0.1'
-UKI_PORT = 21119
-UKI_PATH = '/src/'
-
+# 
+# UKI_HOST = '127.0.0.1'
+# UKI_PORT = 21119
+# UKI_PATH = '/src/'
+# 
 def version_info
   path = File.join(SERVER_ROOT, 'public', 'version_info.json')
   JSON.load File.read(path)
 end
 
+def process_src_paths(content)
+  content
+end
+
+# def process_src_paths(content)
+#   replace_src_paths(content, version_info)
+# end
+
+
 class Ukijs < Sinatra::Base
-  if DEVELOPMENT
-    # proxy requests to development uki version
-    get '/src/*' do
-      proxy_response = Net::HTTP.start(UKI_HOST, UKI_PORT) { |http| http.get("#{UKI_PATH}#{params[:splat][0]}") }
-      proxy_response.each_header { |name, value|
-        response.header[name] = value
-      }
-      proxy_response.body
-    end
+  get %r{\.cjs$} do
+    path = request.path.sub(/\.cjs$/, '.js').sub(%r{^/}, './')
+    path = File.join(UKI_ROOT, path)
+    pass unless File.exists? path
     
-    def process_src_paths(content)
-      content
-    end
-  else
-    def process_src_paths(content)
-      replace_src_paths(content, version_info)
+    response.header['Content-type'] = 'application/x-javascript; charset=UTF-8'
+    begin
+      Uki::Builder.new(path, :optimize => false).code
+    rescue Exception => e
+      message = e.message.sub(/\n/, '\\n')
+      "alert('#{message}')"
     end
   end
   
@@ -40,32 +46,8 @@ class Ukijs < Sinatra::Base
     process_src_paths(haml :index, :locals => {:version_info => version_info})
   end
   
-  get %r{/examples/.*\.(gif|png|css|jpg|js|zip|json)$} do
-    path = request.path
-    response.header['Content-type'] = 'image/png' if path.match(/\.png$/)
-    response.header['Content-type'] = 'image/gif' if path.match(/\.gif$/)
-    response.header['Content-type'] = 'text/css' if path.match(/\.css$/)
-    response.header['Content-type'] = 'image/jpeg' if path.match(/\.jpg$/)
-    response.header['Content-type'] = 'text/javascript;charset=utf-8' if path.match(/\.js(on)$/)
-    response.header['Content-Encoding'] = 'gzip' if path.match(/\.gz/)
-    if path.match(/.zip$/)
-      response.header['Content-Type'] = 'application/x-zip-compressed'
-      response.header['Content-Disposition'] = 'attachment; filename=tmp.zip'
-    end
-    
-    File.read File.join(SERVER_ROOT, path)
-  end
-  
-  get '/functional/*' do
-    redirect '/examples/' + params[:splat][0].sub('.html', '/')
-  end
-  
-  get '/app/functional/*' do
-    redirect '/examples/' + params[:splat][0].sub('.html', '/')
-  end
-  
   get '/examples/' do
-    path = File.join(SERVER_ROOT, 'examples')
+    path = File.join(UKI_ROOT, 'examples')
     exampleList = list_examples(path).map do |name|
       { 
         :path => name, 
@@ -76,14 +58,10 @@ class Ukijs < Sinatra::Base
     haml :exampleList, :locals => { :exampleList => exampleList }
   end
   
-  get %r{/examples/[^/]+/?$} do
-    redirect request.path.sub('/examples/', '/examples/core-examples/')
-  end
-  
-  get '/examples/*' do
-    redirect request.path + '/' unless request.path.match(%{/$}) # force trailing slash
+  get '/examples/*/' do
+    path = File.join(UKI_ROOT, request.path)
+    pass unless File.exists? path
     
-    path = File.join(SERVER_ROOT, 'examples', params[:splat][0])
     page = get_example_page(path)
     if page
       process_src_paths(page) 
@@ -96,20 +74,23 @@ class Ukijs < Sinatra::Base
   end
   
   get '*' do
-    path = request.path
-    response.header['Content-type'] = 'text/plain' if path.match(/\.txt$/) || !path.match(/\./)
-    response.header['Content-type'] = 'image/png' if path.match(/\.png$/)
-    response.header['Content-type'] = 'text/css' if path.match(/\.css$/)
-    response.header['Content-type'] = 'image/jpeg' if path.match(/\.jpg$/)
-    response.header['Content-type'] = 'text/javascript;charset=utf-8' if path.match(/\.js(on)?$/)
-    response.header['Content-Encoding'] = 'gzip' if path.match(/\.gz/)
-    if path.match(/.zip$/)
-      response.header['Content-Type'] = 'application/x-zip-compressed'
-      response.header['Content-Disposition'] = 'attachment; filename=tmp.zip'
-    end
-    
-    File.read File.join(SERVER_ROOT, 'public', path) rescue pass
+    public_path = File.join(SERVER_ROOT, 'public', request.path)
+    uki_path = File.join(UKI_ROOT, request.path) 
+    path = File.exists? (public_path) ? public_path : uki_path
+    send_file path
   end
   
+  # compat redirects
   
+  get %r{/examples/[^/]+/?$} do
+    redirect request.path.sub('/examples/', '/examples/core-examples/')
+  end
+  
+  get '/functional/*' do
+    redirect '/examples/' + params[:splat][0].sub('.html', '/')
+  end
+  
+  get '/app/functional/*' do
+    redirect '/examples/' + params[:splat][0].sub('.html', '/')
+  end
 end
