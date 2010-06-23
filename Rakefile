@@ -24,34 +24,37 @@ task :version_info do
   File.open(target_path, 'w') { |f| f.write info.to_json }
 end
 
-desc "Run nginx host"
-task :nginx do
-  sh "sudo /opt/local/sbin/nginx ;"
-end
+namespace :dev do
 
-desc "Kill nginx"
-task :kill_nginx do
-  sh "sudo kill `cat /opt/local/var/log/nginx/nginx.pid`"
-end
+  desc "Run nginx host"
+  task :nginx do
+    sh "sudo /opt/local/sbin/nginx ;"
+  end
 
-desc "Restart nginx"
-task :restart_nginx, :needs => [:kill_nginx, :nginx] do
-end
+  desc "Kill nginx"
+  task :kill_nginx do
+    sh "sudo kill `cat /opt/local/var/log/nginx/nginx.pid`"
+  end
+
+  desc "Restart nginx"
+  task :restart_nginx, :needs => [:kill_nginx, :nginx] do
+  end
 
 
-desc "Run thin development"
-task :start do
-  sh "thin -C conf/dev.yaml start"
-end
+  desc "Run thin development"
+  task :start do
+    sh "thin -C conf/dev.yaml start"
+  end
 
-desc "Run thin"
-task :restart do
-  sh "thin -C conf/dev.yaml restart"
-end
+  desc "Run thin"
+  task :restart do
+    sh "thin -C conf/dev.yaml restart"
+  end
 
-desc "Stop thin"
-task :stop do
-  sh "thin -C conf/dev.yaml stop"
+  desc "Stop thin"
+  task :stop do
+    sh "thin -C conf/dev.yaml stop"
+  end
 end
 
 namespace :prod do

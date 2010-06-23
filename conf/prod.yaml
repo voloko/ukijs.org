@@ -2,8 +2,8 @@
   environment: production
   address: 127.0.0.1
   port: 3000
-  pid: thin.pid
-  rackup: thin.ru
+  pid: log/thin.pid
+  rackup: conf/thin.ru
   log: log/thin.log
   max_conns: 1024
   timeout: 30
